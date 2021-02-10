@@ -2,18 +2,16 @@
   align-items: center;
   background: #181D22;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
 }
 
 .main {
-  flex: 1;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .footer {
@@ -61,11 +59,6 @@
   font-weight: 300;
   letter-spacing: -.04em;
   width: 505px;
-}
-
-.description {
-  font-size: 1.6rem;
-  font-weight: 200;
 }
 
 .header {
@@ -117,21 +110,32 @@
 .main ul {
   display: flex;
   justify-content: space-around;
-  width: 75%;
+  list-style-type: none;
+  margin: 0 0 70px;
+  padding: 0;
+  width: 1050px;
 }
 
 .main ul li {
-  flex-basis: 30%;
+  flex-basis: 490px;
+  padding: 25px;
 }
 
 .main ul h4  {
   font-size: 1.6rem;
   font-weight: 600;
+  margin: 0 0 15px;
+}
+
+.main h3  {
+  font-size: 1.8rem;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
-.main ul p  {
+.main ul p {
   line-height: 1.6;
+  margin: 0;
 }
 
 .code {
@@ -141,15 +145,6 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
 }
 
 .card {

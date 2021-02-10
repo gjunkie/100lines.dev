@@ -1,9 +1,12 @@
 import * as React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Blob1 from '../public/backgrounds/blob1.svg'
 import Blob2 from '../public/backgrounds/blob2.svg'
 import Blob3 from '../public/backgrounds/blob3.svg'
+
+import Snake from '../projects/games/snake'
 
 export default function Home() {
   return (
@@ -26,22 +29,23 @@ export default function Home() {
             <span>100</span> Lines of Code
           </h1>
         </div>
-        <p className={styles.description}>What can you do with 100 lines of code?</p>
       </header>
 
       <main className={styles.main}>
         <ul>
           <li>
             <h4>The Motivation</h4>
-            <p>Learn and share at my own pace. With a family and a full time job I found it difficult to commit to larger projects. I needed a creative outlet that would allow quick bursts of creatvity.</p>
+            <p>To learn and share at my own pace. This is a creative outlet that allows for creatvity to flow without time constraints.</p>
           </li>
           <li>
             <h4>The Constraints</h4>
-            <p>Build something with 100 lines of code or less.</p>
+            <p>Build something with 100 lines of code or less. That&apos;s it. Each project is a self-contained React component.</p>
           </li>
         </ul>
+        <Link href="/projects" as="/projects">Check out all of the projects ...</Link>
+        <h3>Snake</h3>
+        <Snake />
       </main>
-
 
       <footer className={styles.footer}>
       </footer>

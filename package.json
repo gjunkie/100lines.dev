@@ -13,9 +13,7 @@
     "next": "10.0.6",
     "postcss": "^8.2.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "tailwind": "^4.0.0",
-    "tailwindcss": "^2.0.2"
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

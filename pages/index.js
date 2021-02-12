@@ -35,16 +35,20 @@ export default function Home() {
         <ul>
           <li>
             <h4>The Motivation</h4>
-            <p>To learn and share at my own pace. This is a creative outlet that allows for creatvity to flow without time constraints.</p>
+            <p>To learn and share. This is a creative outlet that allows for creatvity to flow without time constraints. Small components to try new stuff.</p>
           </li>
           <li>
             <h4>The Constraints</h4>
             <p>Build something with 100 lines of code or less. That&apos;s it. Each project is a self-contained React component.</p>
           </li>
         </ul>
-        <Link href="/projects" as="/projects">Check out all of the projects ...</Link>
         <h3>Snake</h3>
-        <Snake />
+        <div className={styles.gameContainer}>
+          <p className={styles.snakeControls}>Use j, k, l, and i for controls.</p>
+          <Snake />
+          <p>Snake was my first component within this project. Originally written in vanilla JS, I later converted it to React to easily include it here. I also wrote a small case study on the project.</p>
+        </div>
+        <Link href="/projects" as="/projects">Check out all of the projects ...</Link>
       </main>
 
       <footer className={styles.footer}>

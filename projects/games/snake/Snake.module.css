@@ -3,18 +3,44 @@
   50% { transform: scale(2); }
   100% { transform: scale(1); }
 }
+.button {
+  background: #263238;
+  width: 150px;
+  height: 40px;
+  border: 1px solid #37474f;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button:active {
+  transform: scale(.9);
+  outline: none;
+}
+.score {
+  font-size: 1rem;
+  font-weight: 500;
+}
 .board {
-  list-style-type: none;
-  margin: 0 20px;
-  padding: 0;
-  width: 630px;
+  width: 602px;
+}
+.button,
+.board {
+  border: 1px solid transparent;
+}
+.button:focus,
+.board:focus {
+  outline: none;
+  border: 1px solid #90a4ae;
 }
 .space {
   border: 1px solid #272e36;
   float: left;
   width: 20px;
   height: 20px;
-  margin-right: 1px;
 }
 .active {
   background: #2196f3;

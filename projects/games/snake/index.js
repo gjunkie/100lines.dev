@@ -1,22 +1,23 @@
 import * as React from 'react'
 import useInterval from './useInterval'
 import styles from './Snake.module.css'
-let gridSize = 30, hasBoost = false
-const makeFoodCoordinates = () => ({ row: Math.floor(Math.random() * (gridSize - 1) + 1), column: Math.floor(Math.random() * (gridSize - 1) + 1)})
 export default function Snake() {
   const gridRef = React.useRef(null)
+  const gridSize = 30;
   const [score, setScore] = React.useState(0)
+  const [hasBoost, setHasBoost] = React.useState(false)
   const [food, setFood] = React.useState(null)
   const [direction, setDirection] = React.useState('left')
-  const [snakeCoords, setSnakeCoords] = React.useState([{row: gridSize - 3, column: gridSize - 5}, {row: gridSize - 3, column: gridSize - 4}, {row: gridSize - 3, column: gridSize - 3}])
-  const [gameInterval, setGameInterval] = React.useState(100)
-  const [foodInterval, setFoodInterval] = React.useState(5000)
+  const [snakeCoords, setSnakeCoords] = React.useState([])
+  const [gameInterval, setGameInterval] = React.useState(null)
+  const [foodInterval, setFoodInterval] = React.useState(null)
   const handleKeyPress = event => {
     if (event.key === 'i' && direction !== 'down') setDirection('up')
     if (event.key === 'l' && direction !== 'left') setDirection('right')
     if (event.key === 'k' && direction !== 'up') setDirection('down')
     if (event.key === 'j' && direction !== 'right') setDirection('left')
   }
+  const makeFoodCoordinates = () => ({ row: Math.floor(Math.random() * (gridSize - 1) + 1), column: Math.floor(Math.random() * (gridSize - 1) + 1)})
   const renderGrid = size => {
     const squares = []
     for (let row = 0; row < size; row++) {
@@ -74,12 +75,12 @@ export default function Snake() {
   }
   const boostSnake = () => {
     setFood(null)
-    hasBoost = true
+    setHasBoost(true)
     setScore(score + 2)
     setGameInterval(50)
     setTimeout(() => {
-      setGameInterval(100)
-      hasBoost = false
+      setGameInterval(75)
+      setHasBoost(false)
     }, 7000)
   }
   const loseGame = () => {
@@ -92,14 +93,23 @@ export default function Snake() {
     setFood(null)
     setDirection('left')
     setSnakeCoords([{row: gridSize - 3, column: gridSize - 5}, {row: gridSize - 3, column: gridSize - 4}, {row: gridSize - 3, column: gridSize - 3}])
-    setGameInterval(gameInterval)
-    setFoodInterval(foodInterval)
+    setGameInterval(75)
+    setFoodInterval(5000)
   }
-  React.useEffect(() => {
-    newGame()
-    gridRef.current.focus()
-  }, [])
   useInterval(placeFood, foodInterval)
   useInterval(moveSnake, gameInterval)
-  return <div ref={gridRef} onKeyPress={handleKeyPress} tabIndex="0" className={styles.board}>{renderGrid(gridSize)}</div>
+  const startGame = () => {
+    console.log('new game')
+    newGame()
+    gridRef.current.focus()
+  }
+  return (
+    <React.Fragment>
+      <div ref={gridRef} onKeyPress={handleKeyPress} tabIndex="0" className={styles.board}>{renderGrid(gridSize)}</div>
+      <div className={styles.score}>
+        <div className={styles.score}>Score: {score}</div>
+      </div>
+      <button className={styles.button} onClick={startGame}>Start New Game</button>
+    </React.Fragment>
+  )
 }
